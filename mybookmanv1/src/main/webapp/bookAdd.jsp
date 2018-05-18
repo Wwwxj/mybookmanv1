@@ -82,10 +82,15 @@
 							类型： </label>
 						<div class="col-sm-10">
 							<select name="tid" class="form-control" id="selectedTid">
-							<option value="1">名著</option>
-							<option value="2">编程</option>
-							<option value="3">烹饪</option>
-	                       </select>
+								<%
+									List<TypeVo> ls = (List<TypeVo>) request.getAttribute("ls");
+									for (TypeVo typeVo : ls) {
+								%>
+								<option value="<%=typeVo.getId()%>"><%=typeVo.getName()%></option>
+								<%
+									}
+								%>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
@@ -142,14 +147,5 @@
 			});
 		});
 	</script>
-	<script type="text/javascript">
-	function fillsel() {
-		var sel=document.getElementById("selectedTid");
-		for(var i=0;i<types.size();i++){
-			sel.appendChild(new Option(types[i].name,types[i].id));
-			}
-	}
-	</script>
-	<script type="text/javascript" src="findAllTypes" onload="fillSel()"></script>
 </body>
 </html>
