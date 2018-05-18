@@ -143,13 +143,13 @@
 		});
 	</script>
 	<script type="text/javascript">
-	function fillsel() {
+	function fillsel(types) {
 		var sel=document.getElementById("selectedTid");
 		for(var i=0;i<types.size();i++){
 			sel.appendChild(new Option(types[i].name,types[i].id));
 			}
 	}
 	</script>
-	<script type="text/javascript" src="findAllTypes" onload="fillSel()"></script>
+	<iframe src="findAllTypes" style="display: none;"></iframe>
 </body>
 </html>

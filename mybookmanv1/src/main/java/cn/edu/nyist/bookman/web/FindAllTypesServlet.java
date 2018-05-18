@@ -31,8 +31,9 @@ public class FindAllTypesServlet extends HttpServlet {
 		request.setAttribute("ls", ls);
 		request.getRequestDispatcher("bookAdd.jsp").forward(request, response);*/
 		//返回一个js
-		response.setContentType("text/javascript;charset=utf-8");
-		String js="var types=[";
+		response.setContentType("text/html;charset=utf-8");
+		response.getWriter().write("<script>");
+		String js="[";
 		for(int i=0;i<ls.size();i++) {
 			js+="{id:"+ls.get(i).getId()+",name:'"+ls.get(i).getName()+"'}";
 			if(i<ls.size()-1) {
@@ -40,9 +41,10 @@ public class FindAllTypesServlet extends HttpServlet {
 			}
 		}
 		js+="]";
-		response.getWriter().write(js);
+		response.getWriter().write("window.parent.fillSel("+js+")");
+		response.getWriter().write("</script>");
 	}
-
+      
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
